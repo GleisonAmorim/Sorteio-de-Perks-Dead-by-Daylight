@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('https://deadbydaylight.com/static/c3f2458c3a5bca701cb4ccc96f15cf66/653d1/dbd_keyart_tab_34c48816bb.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+    margin-top: 20px;
+    color: white; /* Define a cor do texto como branco */
+        }
+       
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff0000;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 20px;
+            margin-left: 60px;
+            border-radius: 5px;
+            position: center;
+            overflow: hidden;
+            animation: bloodDrops 1s infinite;
+        }
+
+        button:hover {
+            background-color: #870000;
+            
+        }
+
+        @keyframes bloodDrops {
+            0%, 100% {
+                transform: translateY(-5px);
+            }
+            50% {
+                transform: translateY(5px);
+            }
+        }
+
+        #menu {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            background-color: none
+            color: white; /* Cor do texto do menu */            
+            padding: 20px;
+            box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+            height: 70vh;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            border-radius: 10px;
+        }
+
+        #menu h2 {
+    color: white; }
+        select {
+            margin-bottom: 20px;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        #sortearBtn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff0000;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            animation: bloodDrops 1s infinite;
+        }
+
+        #sortearBtn:hover {
+            background-color: #870000;
+        }
+
+        #perkDisplay {
+            opacity: 0;
+            visibility: hidden;
+            font-size: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 70%;
+            margin-left: 10%;
+            padding: 20px;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+        }
+
+        .categoria {
+            margin-top: 20px;
+        }
+        .categoria h2 {
+    color: white;
+        }
+        .perk {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+        }
+
+        @keyframes bloodDrops {
+            0%, 100% {
+                transform: translateY(-5px);
+            }
+            50% {
+                transform: translateY(5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="menu">
+        <h2><span class="emoji">🔪</span> Escolha uma categoria:</h2>
+        <select id="categoriaSelect">
+           
+            <option value="Final de Partida">Perks para Final de Partida</option>
+            <option value="Curar e Apoiar">Perks para Curar e Apoiar</option>
+            <option value="Fuga Tática">Perks para Fuga Tática</option>
+            <option value="Resistência e Habilidade">Perks para Resistência e Habilidade</option>
+            <option value="Cura e Estratégia">Perks para Cura e Estratégia</option>
+            <option value="Aprimoramento de Itens">Perks para Aprimoramento de Itens</option>
+            <option value="Aura e Estratégia">Perks para Aura e Estratégia</option>
+            <option value="Agilidade e Cura">Perks para Agilidade e Cura</option>
+         </select>
+        <button id="sortearBtn"><span class="emoji">💉</span> Sortear Perks</button>
+    </div>
+    <div id="perkDisplay"></div>
+
+    <script>
+        const perksPorCategoria = {
+                    'Final de Partida':[ 'No One Left Behind', 'We\'re Gonna Live Forever', 'Borrowed Time', 'Adrenaline',
+                ],
+                'Curar e Apoiar': [
+                    'Botany Knowledge', 'Empathy', 'We\'ll Make It', 'Kindred',
+                ],
+                'Evasão Rápida': [
+                    'Balanced Landing', 'Lithe', 'Sprint Burst', 'Quick & Quiet',
+                ],
+                'Detecção e Premonição': [
+                    'Alert', 'Spine Chill', 'Small Game', 'Premonition',
+                ],
+                'Estratégias de Gerador': [
+                    'Better Together', 'Prove Thyself', 'Technician', 'No Mither',
+                ],
+                'Enganando o Assassino': [
+                    'Dance With Me', 'Urban Evasion', 'Quick & Quiet', 'Diversion',
+                ],
+                'Resistência e Sobrevivência': [
+                    'Unbreakable', 'Adrenaline', 'Iron Will', 'Tenacity',
+                ],
+                'Busca por Itens': [
+                    'Ace in the Hole', 'Plunderer\'s Instinct', 'Pharmacy', 'Detective\'s Hunch',
+                ],
+                'Leitura de Aura e Estratégia': [
+                    'Distorção', 'Open-Handed', 'Appraisal', 'Detective\'s Hunch',
+                ],
+                'Cura e Mobilidade': [
+                    'Medidas desesperadas', 'Autodidact', 'Inner Strength', 'Balanced Landing',
+                ],
+                'Velocidade e fuga': [
+                    'Urban Evasion', 'Lightweight', 'Lithe', 'Sprint Burst',
+                ],
+                'Fuga Rápida': [
+                    'Adrenaline', 'Dead Hard', 'Lithe', 'Sprint Burst',
+                ],
+                'Resgate e Apoio': [
+                    'Borrowed Time', 'We\'ll Make It', 'Empathy', 'Kindred',
+                ],
+                'Estratégias de Perseguição': [
+                    'Diversion', 'Dance With Me', 'Iron Will', 'Quick & Quiet',
+                ],
+                'Detecção e Sobrevivência': [
+                    'Spine Chill', 'Small Game', 'Premonition', 'Alert',
+                ],
+                'Mobilidade e Sobrevivência': [
+                    'Balanced Landing', 'Sprint Burst', 'Lithe', 'Urban Evasion',
+                ],
+                'Enganando o Assassino': [
+                    'Urban Evasion', 'Dance With Me', 'Quick & Quiet', 'Lithe',
+                ],
+                'Resistência e Velocidade': [
+                    'Adrenaline', 'Dead Hard', 'Iron Will', 'Unbreakable',
+                ],
+                'Cura e Estratégia': [
+                    'Botany Knowledge', 'Empathy', 'We\'ll Make It', 'Medidas desesperadas',
+                ],
+                'Mestre dos Itens': [
+                    'Ace in the Hole', 'Plunderer\'s Instinct', 'Pharmacy', 'Detective\'s Hunch',
+                ],
+                'Leitura de Aura e Perseguição': [
+                    'Object of Obsession', 'Spine Chill', 'Premonition', 'Kindred',
+                ],
+                'Agilidade e Velocidade': [
+                    'Balanced Landing', 'Lithe', 'Sprint Burst', 'Quick & Quiet',
+                ],
+                'Estratégias de Reparo': [
+                    'Better Together', 'Prove Thyself', 'Technician', 'No Mither',
+                ],
+                'Enganando e Escapando': [
+                    'Urban Evasion', 'Dance With Me', 'Diversion', 'Quick & Quiet',
+                ],
+                'Resistência e Habilidade': [
+                    'Unbreakable', 'Adrenaline', 'Dead Hard', 'Iron Will',
+                ],
+                'Suporte e Cura': [
+                    'Empathy', 'We\'ll Make It', 'Borrowed Time', 'Botany Knowledge',
+                ],
+                'Busca Estratégica': [
+                    'Ace in the Hole', 'Plunderer\'s Instinct', 'Detective\'s Hunch', 'Appraisal',
+                ],
+                'Premonição e Evasão': [
+                    'Alert', 'Spine Chill', 'Small Game', 'Urban Evasion',
+                ],
+                'Evasão Veloz': [
+                    'Balanced Landing', 'Lithe', 'Sprint Burst', 'Quick & Quiet',
+                ],
+                'Resgate Rápido': [
+                    'Borrowed Time', 'We\'ll Make It', 'Empathy', 'Kindred',
+                ],
+                'Estratégias de Sobrevivência': [
+                    'Iron Will', 'Unbreakable', 'Tenacity', 'No Mither',
+                ],
+                'Busca e Utilidade': [
+                    'Ace in the Hole', 'Plunderer\'s Instinct', 'Detective\'s Hunch', 'Pharmacy',
+                ],
+                'Leitura e Discrição': [
+                    'Object of Obsession', 'Premonition', 'Kindred', 'Diversion',
+                ],
+                'Evasão Tática': [
+                    'Urban Evasion', 'Balanced Landing', 'Lithe', 'Quick & Quiet',
+                ],
+                'Fuga Rápida e Habilidade': [
+                    'Adrenaline', 'Dead Hard', 'Iron Will', 'No Mither',
+                ],
+                'Cura Estratégica': [
+                    'Botany Knowledge', 'Empathy', 'We\'ll Make It', 'Self-Care',
+                ],
+                'Aprimoramento de Itens': [
+                    'Ace in the Hole', 'Plunderer\'s Instinct', 'Detective\'s Hunch', 'Pharmacy',
+                ],
+                'Aura e Estratégia': [
+                    'Object of Obsession', 'Open-Handed', 'Detective\'s Hunch', 'Kindred',
+                ],
+                'Agilidade e Cura': [
+                    'Balanced Landing', 'Lithe', 'Sprint Burst', 'We\'ll Make It',
+                ],
+                'Táticas de Fuga': [
+                    'Dance With Me', 'Urban Evasion', 'Quick & Quiet', 'Diversion',
+                ],
+                'Habilidade e Resistência': [
+                    'Adrenaline', 'Dead Hard', 'Iron Will', 'Unbreakable',
+                ],
+                'Suporte e Apoio': [
+                    'Empathy', 'We\'ll Make It', 'Borrowed Time', 'Kindred',
+                ],
+                'Utilidade de Itens': [
+                    'Ace in the Hole', 'Plunderer\'s Instinct', 'Detective\'s Hunch', 'Pharmacy',
+                ],
+                'Leitura e Sobrevivência': [
+                    'Object of Obsession', 'Spine Chill', 'Premonition', 'No Mither',
+                ],
+                'Agilidade e Evasão': [
+                    'Balanced Landing', 'Lithe', 'Sprint Burst', 'Urban Evasion',
+                ],
+                'Fuga Tática': [
+                    'Dance With Me', 'Quick & Quiet', 'Diversion', 'Urban Evasion',
+                ],
+                'Resistência e Habilidade': [
+                    'Adrenaline', 'Dead Hard', 'Iron Will', 'Tenacity',
+                ],
+                'Cura e Estratégia': [
+                    'Botany Knowledge', 'Empathy', 'We\'ll Make It', 'Self-Care',
+                ],
+                'Aprimoramento de Itens': [
+                    'Ace in the Hole', 'Plunderer\'s Instinct', 'Detective\'s Hunch', 'Pharmacy',
+                ],
+                'Leitura e Apoio': [
+                    'Object of Obsession', 'Detective\'s Hunch', 'Kindred', 'Empathy',
+                ],
+                'Evasão e Agilidade': [
+                    'Balanced Landing', 'Lithe', 'Sprint Burst', 'Quick & Quiet',
+                ],
+                'Fuga Estratégica': [
+                    'Dance With Me', 'Urban Evasion', 'Diversion', 'Quick & Quiet',
+                ],
+                'Habilidade e Resgate': [
+                    'Borrowed Time', 'Unbreakable', 'Iron Will', 'Kindred',
+                ],
+                'Detecção e Estratégia': [
+                    'Alert', 'Spine Chill', 'Small Game', 'Detective\'s Hunch',
+                ],
+                'Cura e Mobilidade': [
+                    'Self-Care', 'Balanced Landing', 'Lithe', 'Sprint Burst',
+                ],
+                'Fuga e Engano': [
+                    'Urban Evasion', 'Quick & Quiet', 'Diversion', 'Dance With Me',
+                ],
+                'Resistência Estratégica': [
+                    'Adrenaline', 'Dead Hard', 'Iron Will', 'Unbreakable',
+                ],
+                'Suporte e Cura': [
+                    'Empathy', 'We\'ll Make It', 'Borrowed Time', 'Botany Knowledge',
+                ],
+                'Utilidade de Itens': [
+                    'Ace in the Hole', 'Plunderer\'s Instinct', 'Detective\'s Hunch', 'Pharmacy',
+                ],
+                'Leitura e Sobrevivência': [
+                    'Object of Obsession', 'Spine Chill', 'Premonition', 'No Mither',
+                ],
+                'Agilidade e Evasão': [
+                    'Balanced Landing', 'Lithe', 'Sprint Burst', 'Urban Evasion',
+                ],
+                'Fuga Tática': [
+                    'Dance With Me', 'Quick & Quiet', 'Diversion', 'Urban Evasion',
+                ],
+                'Resistência e Habilidade': [
+                    'Adrenaline', 'Dead Hard', 'Iron Will', 'Tenacity',
+                ],
+                'Cura e Estratégia': [
+                    'Botany Knowledge', 'Empathy', 'We\'ll Make It', 'Self-Care',
+                ],
+                'Aprimoramento de Itens': [
+                    'Ace in the Hole', 'Plunderer\'s Instinct', 'Detective\'s Hunch', 'Pharmacy',
+                ],
+                'Aura e Estratégia': [
+                    'Object of Obsession', 'Open-Handed', 'Detective\'s Hunch', 'Kindred',
+                ],
+                'Agilidade e Cura': [
+                    'Balanced Landing', 'Lithe', 'Sprint Burst', 'We\'ll Make It',
+                ],
+            };
+        
+
+            const sortearBtn = document.getElementById('sortearBtn');
+        const categoriaSelect = document.getElementById('categoriaSelect');
+        const perkDisplay = document.getElementById('perkDisplay');
+
+        sortearBtn.addEventListener('click', () => {
+            perkDisplay.innerHTML = '';
+
+            let categoriasSelecionadas = Object.keys(perksPorCategoria);
+
+            if (categoriaSelect.value !== 'Todas') {
+                categoriasSelecionadas = [categoriaSelect.value];
+            }
+
+            categoriasSelecionadas.forEach(categoria => {
+                const categoriaPerks = perksPorCategoria[categoria];
+                const perkEscolhidaIndices = [];
+
+                while (perkEscolhidaIndices.length < 4) {
+                    const randomIndex = Math.floor(Math.random() * categoriaPerks.length);
+                    if (!perkEscolhidaIndices.includes(randomIndex)) {
+                        perkEscolhidaIndices.push(randomIndex);
+                    }
+                }
+
+                const categoriaDiv = document.createElement('div');
+                categoriaDiv.classList.add('categoria');
+                categoriaDiv.innerHTML = `<h2>${categoria}</h2>`;
+                perkDisplay.appendChild(categoriaDiv);
+
+                perkEscolhidaIndices.forEach(index => {
+                    const perkDiv = document.createElement('div');
+                    perkDiv.classList.add('perk');
+                    perkDiv.innerHTML = `<p>Perk escolhida: <strong>${categoriaPerks[index]}</strong></p>`;
+                    categoriaDiv.appendChild(perkDiv);
+                });
+            });
+
+            perkDisplay.style.opacity = 1;
+            perkDisplay.style.visibility = 'visible';
+        });
+    </script>
+</body>
+</html>
