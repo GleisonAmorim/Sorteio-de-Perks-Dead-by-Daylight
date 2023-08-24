@@ -31,5 +31,7 @@ Aviso: Este projeto é apenas para fins educacionais e de aprendizado.
 
 Sinta-se à vontade para personalizar e expandir este resumo conforme suas necessidades e preferências antes de criar o repositório no GitHub. Certifique-se de incluir todos os arquivos necessários, como HTML, CSS, JavaScript, imagens etc.
 
+Acesse: https://sorteio-de-perks-dead-by-daylight.vercel.app/
+
 ![Captura de tela 2023-08-09 152805](https://github.com/GleisonAmorim/Sorteio-de-Perks-Dead-by-Daylight/assets/54336609/727f809a-3e1b-4aac-a464-785e2d838d95)
 
