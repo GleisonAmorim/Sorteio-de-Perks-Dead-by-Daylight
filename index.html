@@ -20,10 +20,9 @@
         }
 
         h1 {
-    margin-top: 20px;
-    color: white; /* Define a cor do texto como branco */
+            margin-top: 20px;
+            color: white; 
         }
-       
 
         button {
             padding: 10px 20px;
@@ -35,23 +34,17 @@
             margin-top: 20px;
             margin-left: 60px;
             border-radius: 5px;
-            position: center;
             overflow: hidden;
             animation: bloodDrops 1s infinite;
         }
 
         button:hover {
             background-color: #870000;
-            
         }
 
         @keyframes bloodDrops {
-            0%, 100% {
-                transform: translateY(-5px);
-            }
-            50% {
-                transform: translateY(5px);
-            }
+            0%, 100% { transform: translateY(-5px); }
+            50% { transform: translateY(5px); }
         }
 
         #menu {
@@ -59,8 +52,7 @@
             top: 50%;
             left: 0;
             transform: translateY(-50%);
-            background-color: none
-            color: white; /* Cor do texto do menu */            
+            color: white;            
             padding: 20px;
             box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
             height: 70vh;
@@ -73,28 +65,13 @@
         }
 
         #menu h2 {
-    color: white; }
+            color: white; 
+        }
+
         select {
             margin-bottom: 20px;
             padding: 5px;
             font-size: 16px;
-        }
-
-        #sortearBtn {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #ff0000;
-            border: none;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 5px;
-            position: relative;
-            overflow: hidden;
-            animation: bloodDrops 1s infinite;
-        }
-
-        #sortearBtn:hover {
-            background-color: #870000;
         }
 
         #perkDisplay {
@@ -110,48 +87,38 @@
             padding: 20px;
             transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
         }
-        
+
         footer {
-      text-align: center;
-      padding: 10px;
-      background-color: rgba(240, 240, 240, 0.8);
-      color: #000;
-      border-radius: 10px;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      opacity: 0.9;
-    }
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(240, 240, 240, 0.8);
+            color: #000;
+            border-radius: 10px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0.9;
+        }
 
-    footer a {
-      color: #000;
-      text-decoration: none;
-    }
+        footer a {
+            color: #000;
+            text-decoration: none;
+        }
 
-    footer a:hover {
-      text-decoration: underline;
-    }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
         .categoria {
             margin-top: 20px;
         }
-        .categoria h2 {
-    color: white;
-        }
+
         .perk {
             margin: 10px 0;
             padding: 10px;
             background-color: #e0e0e0;
             border-radius: 5px;
-        }
-
-        @keyframes bloodDrops {
-            0%, 100% {
-                transform: translateY(-5px);
-            }
-            50% {
-                transform: translateY(5px);
-            }
         }
     </style>
 </head>
@@ -159,7 +126,6 @@
     <div id="menu">
         <h2><span class="emoji">🔪</span> Escolha uma categoria:</h2>
         <select id="categoriaSelect">
-           
             <option value="Final de Partida">Perks para Final de Partida</option>
             <option value="Curar e Apoiar">Perks para Curar e Apoiar</option>
             <option value="Fuga Tática">Perks para Fuga Tática</option>
@@ -168,14 +134,10 @@
             <option value="Aprimoramento de Itens">Perks para Aprimoramento de Itens</option>
             <option value="Aura e Estratégia">Perks para Aura e Estratégia</option>
             <option value="Agilidade e Cura">Perks para Agilidade e Cura</option>
-         </select>
+        </select>
         <button id="sortearBtn"><span class="emoji">💉</span> Sortear Perks</button>
     </div>
     <div id="perkDisplay"></div>
-    <footer style="background-color: rgba(255, 255, 255, 0.7); padding: 10px; text-align: center;">
-        <p>Conheça mais sobre mim no <a href="https://www.linkedin.com/in/gleisonamorim/" target="_blank">LinkedIn</a></p>
-    </footer>
-
     <footer>
         <p>Conheça mais sobre mim no <a href="https://www.linkedin.com/in/gleisonamorim/" target="_blank">LinkedIn</a></p>
     </footer>
@@ -184,41 +146,34 @@
 const perksPorCategoria = {
     'Final de Partida': ['Ninguém Fica Para Trás', 'Vamos Viver Para Sempre', 'Adrenalina'],
     'Curar e Apoiar': ['Conhecimento Botânico', 'Empatia', 'Vamos Conseguir', 'Kindred'],
+    'Fuga Tática': ['Pouso Equilibrado', 'Ágil', 'Explosão de Sprint', 'Silêncio e Sutileza'],
+    'Resistência e Habilidade': ['Inquebrável', 'Adrenalina', 'Vontade de Ferro', 'Tenacidade'],
+    'Cura e Estratégia': ['Medidas Desesperadas', 'Autodidata', 'Força Interior', 'Pouso Equilibrado'],
+    'Aprimoramento de Itens': ['Coringa', 'Instinto de Saqueador', 'Farmácia', 'Intuição do Detetive'],
+    'Aura e Estratégia': ['Distorção', 'Mão Aberta', 'Avaliação', 'Intuição do Detetive'],
+    'Agilidade e Cura': ['Pouso Equilibrado', 'Ágil', 'Explosão de Sprint', 'Vamos Conseguir'],
     'Evasão Rápida': ['Pouso Equilibrado', 'Ágil', 'Explosão de Sprint', 'Silêncio e Sutileza'],
     'Detecção e Premonição': ['Alerta', 'Calafrio na Espinha', 'Pequeno Jogo', 'Premonição'],
     'Estratégias de Gerador': ['Melhor Juntos', 'Prove Seu Valor', 'Técnico', 'Sem Misericórdia'],
     'Enganando o Assassino': ['Dance Comigo', 'Evasão Urbana', 'Silêncio e Sutileza', 'Desvio'],
-    'Resistência e Sobrevivência': ['Inquebrável', 'Adrenalina', 'Vontade de Ferro', 'Tenacidade'],
     'Busca por Itens': ['Coringa', 'Instinto de Saqueador', 'Farmácia', 'Intuição do Detetive'],
     'Leitura de Aura e Estratégia': ['Distorção', 'Mão Aberta', 'Avaliação', 'Intuição do Detetive'],
-    'Cura e Mobilidade': ['Medidas Desesperadas', 'Autodidata', 'Força Interior', 'Pouso Equilibrado'],
     'Fuga Rápida': ['Adrenalina', 'Coração Parado', 'Ágil', 'Explosão de Sprint'],
     'Resgate e Apoio': ['Empatia', 'Vamos Conseguir', 'Kindred'],
     'Estratégias de Perseguição': ['Desvio', 'Dance Comigo', 'Vontade de Ferro', 'Silêncio e Sutileza'],
     'Mobilidade e Sobrevivência': ['Pouso Equilibrado', 'Explosão de Sprint', 'Ágil', 'Evasão Urbana'],
     'Resistência e Velocidade': ['Adrenalina', 'Coração Parado', 'Vontade de Ferro', 'Inquebrável'],
-    'Cura e Estratégia': ['Conhecimento Botânico', 'Empatia', 'Vamos Conseguir'],
-    'Aprimoramento de Itens': ['Coringa', 'Instinto de Saqueador', 'Intuição do Detetive', 'Farmácia'],
-    'Aura e Estratégia': ['Objeto da Obsessão', 'Mão Aberta', 'Intuição do Detetive', 'Kindred'],
-    'Agilidade e Cura': ['Pouso Equilibrado', 'Ágil', 'Explosão de Sprint', 'Vamos Conseguir'],
 };
 
-        
-
-            const sortearBtn = document.getElementById('sortearBtn');
+        const sortearBtn = document.getElementById('sortearBtn');
         const categoriaSelect = document.getElementById('categoriaSelect');
         const perkDisplay = document.getElementById('perkDisplay');
 
         sortearBtn.addEventListener('click', () => {
             perkDisplay.innerHTML = '';
+            let categoria = categoriaSelect.value;
 
-            let categoriasSelecionadas = Object.keys(perksPorCategoria);
-
-            if (categoriaSelect.value !== 'Todas') {
-                categoriasSelecionadas = [categoriaSelect.value];
-            }
-
-            categoriasSelecionadas.forEach(categoria => {
+            if (categoria !== 'Todas') {
                 const categoriaPerks = perksPorCategoria[categoria];
                 const perkEscolhidaIndices = [];
 
@@ -240,10 +195,10 @@ const perksPorCategoria = {
                     perkDiv.innerHTML = `<p>Perk escolhida: <strong>${categoriaPerks[index]}</strong></p>`;
                     categoriaDiv.appendChild(perkDiv);
                 });
-            });
 
-            perkDisplay.style.opacity = 1;
-            perkDisplay.style.visibility = 'visible';
+                perkDisplay.style.opacity = 1;
+                perkDisplay.style.visibility = 'visible';
+            }
         });
     </script>
 </body>
