@@ -181,208 +181,28 @@
     </footer>
   
     <script>
-        const perksPorCategoria = {
-                    'Final de Partida':[ 'No One Left Behind', 'We\'re Gonna Live Forever', 'Borrowed Time', 'Adrenaline',
-                ],
-                'Curar e Apoiar': [
-                    'Botany Knowledge', 'Empathy', 'We\'ll Make It', 'Kindred',
-                ],
-                'Evasão Rápida': [
-                    'Balanced Landing', 'Lithe', 'Sprint Burst', 'Quick & Quiet',
-                ],
-                'Detecção e Premonição': [
-                    'Alert', 'Spine Chill', 'Small Game', 'Premonition',
-                ],
-                'Estratégias de Gerador': [
-                    'Better Together', 'Prove Thyself', 'Technician', 'No Mither',
-                ],
-                'Enganando o Assassino': [
-                    'Dance With Me', 'Urban Evasion', 'Quick & Quiet', 'Diversion',
-                ],
-                'Resistência e Sobrevivência': [
-                    'Unbreakable', 'Adrenaline', 'Iron Will', 'Tenacity',
-                ],
-                'Busca por Itens': [
-                    'Ace in the Hole', 'Plunderer\'s Instinct', 'Pharmacy', 'Detective\'s Hunch',
-                ],
-                'Leitura de Aura e Estratégia': [
-                    'Distorção', 'Open-Handed', 'Appraisal', 'Detective\'s Hunch',
-                ],
-                'Cura e Mobilidade': [
-                    'Medidas desesperadas', 'Autodidact', 'Inner Strength', 'Balanced Landing',
-                ],
-                'Velocidade e fuga': [
-                    'Urban Evasion', 'Lightweight', 'Lithe', 'Sprint Burst',
-                ],
-                'Fuga Rápida': [
-                    'Adrenaline', 'Dead Hard', 'Lithe', 'Sprint Burst',
-                ],
-                'Resgate e Apoio': [
-                    'Borrowed Time', 'We\'ll Make It', 'Empathy', 'Kindred',
-                ],
-                'Estratégias de Perseguição': [
-                    'Diversion', 'Dance With Me', 'Iron Will', 'Quick & Quiet',
-                ],
-                'Detecção e Sobrevivência': [
-                    'Spine Chill', 'Small Game', 'Premonition', 'Alert',
-                ],
-                'Mobilidade e Sobrevivência': [
-                    'Balanced Landing', 'Sprint Burst', 'Lithe', 'Urban Evasion',
-                ],
-                'Enganando o Assassino': [
-                    'Urban Evasion', 'Dance With Me', 'Quick & Quiet', 'Lithe',
-                ],
-                'Resistência e Velocidade': [
-                    'Adrenaline', 'Dead Hard', 'Iron Will', 'Unbreakable',
-                ],
-                'Cura e Estratégia': [
-                    'Botany Knowledge', 'Empathy', 'We\'ll Make It', 'Medidas desesperadas',
-                ],
-                'Mestre dos Itens': [
-                    'Ace in the Hole', 'Plunderer\'s Instinct', 'Pharmacy', 'Detective\'s Hunch',
-                ],
-                'Leitura de Aura e Perseguição': [
-                    'Object of Obsession', 'Spine Chill', 'Premonition', 'Kindred',
-                ],
-                'Agilidade e Velocidade': [
-                    'Balanced Landing', 'Lithe', 'Sprint Burst', 'Quick & Quiet',
-                ],
-                'Estratégias de Reparo': [
-                    'Better Together', 'Prove Thyself', 'Technician', 'No Mither',
-                ],
-                'Enganando e Escapando': [
-                    'Urban Evasion', 'Dance With Me', 'Diversion', 'Quick & Quiet',
-                ],
-                'Resistência e Habilidade': [
-                    'Unbreakable', 'Adrenaline', 'Dead Hard', 'Iron Will',
-                ],
-                'Suporte e Cura': [
-                    'Empathy', 'We\'ll Make It', 'Borrowed Time', 'Botany Knowledge',
-                ],
-                'Busca Estratégica': [
-                    'Ace in the Hole', 'Plunderer\'s Instinct', 'Detective\'s Hunch', 'Appraisal',
-                ],
-                'Premonição e Evasão': [
-                    'Alert', 'Spine Chill', 'Small Game', 'Urban Evasion',
-                ],
-                'Evasão Veloz': [
-                    'Balanced Landing', 'Lithe', 'Sprint Burst', 'Quick & Quiet',
-                ],
-                'Resgate Rápido': [
-                    'Borrowed Time', 'We\'ll Make It', 'Empathy', 'Kindred',
-                ],
-                'Estratégias de Sobrevivência': [
-                    'Iron Will', 'Unbreakable', 'Tenacity', 'No Mither',
-                ],
-                'Busca e Utilidade': [
-                    'Ace in the Hole', 'Plunderer\'s Instinct', 'Detective\'s Hunch', 'Pharmacy',
-                ],
-                'Leitura e Discrição': [
-                    'Object of Obsession', 'Premonition', 'Kindred', 'Diversion',
-                ],
-                'Evasão Tática': [
-                    'Urban Evasion', 'Balanced Landing', 'Lithe', 'Quick & Quiet',
-                ],
-                'Fuga Rápida e Habilidade': [
-                    'Adrenaline', 'Dead Hard', 'Iron Will', 'No Mither',
-                ],
-                'Cura Estratégica': [
-                    'Botany Knowledge', 'Empathy', 'We\'ll Make It', 'Self-Care',
-                ],
-                'Aprimoramento de Itens': [
-                    'Ace in the Hole', 'Plunderer\'s Instinct', 'Detective\'s Hunch', 'Pharmacy',
-                ],
-                'Aura e Estratégia': [
-                    'Object of Obsession', 'Open-Handed', 'Detective\'s Hunch', 'Kindred',
-                ],
-                'Agilidade e Cura': [
-                    'Balanced Landing', 'Lithe', 'Sprint Burst', 'We\'ll Make It',
-                ],
-                'Táticas de Fuga': [
-                    'Dance With Me', 'Urban Evasion', 'Quick & Quiet', 'Diversion',
-                ],
-                'Habilidade e Resistência': [
-                    'Adrenaline', 'Dead Hard', 'Iron Will', 'Unbreakable',
-                ],
-                'Suporte e Apoio': [
-                    'Empathy', 'We\'ll Make It', 'Borrowed Time', 'Kindred',
-                ],
-                'Utilidade de Itens': [
-                    'Ace in the Hole', 'Plunderer\'s Instinct', 'Detective\'s Hunch', 'Pharmacy',
-                ],
-                'Leitura e Sobrevivência': [
-                    'Object of Obsession', 'Spine Chill', 'Premonition', 'No Mither',
-                ],
-                'Agilidade e Evasão': [
-                    'Balanced Landing', 'Lithe', 'Sprint Burst', 'Urban Evasion',
-                ],
-                'Fuga Tática': [
-                    'Dance With Me', 'Quick & Quiet', 'Diversion', 'Urban Evasion',
-                ],
-                'Resistência e Habilidade': [
-                    'Adrenaline', 'Dead Hard', 'Iron Will', 'Tenacity',
-                ],
-                'Cura e Estratégia': [
-                    'Botany Knowledge', 'Empathy', 'We\'ll Make It', 'Self-Care',
-                ],
-                'Aprimoramento de Itens': [
-                    'Ace in the Hole', 'Plunderer\'s Instinct', 'Detective\'s Hunch', 'Pharmacy',
-                ],
-                'Leitura e Apoio': [
-                    'Object of Obsession', 'Detective\'s Hunch', 'Kindred', 'Empathy',
-                ],
-                'Evasão e Agilidade': [
-                    'Balanced Landing', 'Lithe', 'Sprint Burst', 'Quick & Quiet',
-                ],
-                'Fuga Estratégica': [
-                    'Dance With Me', 'Urban Evasion', 'Diversion', 'Quick & Quiet',
-                ],
-                'Habilidade e Resgate': [
-                    'Borrowed Time', 'Unbreakable', 'Iron Will', 'Kindred',
-                ],
-                'Detecção e Estratégia': [
-                    'Alert', 'Spine Chill', 'Small Game', 'Detective\'s Hunch',
-                ],
-                'Cura e Mobilidade': [
-                    'Self-Care', 'Balanced Landing', 'Lithe', 'Sprint Burst',
-                ],
-                'Fuga e Engano': [
-                    'Urban Evasion', 'Quick & Quiet', 'Diversion', 'Dance With Me',
-                ],
-                'Resistência Estratégica': [
-                    'Adrenaline', 'Dead Hard', 'Iron Will', 'Unbreakable',
-                ],
-                'Suporte e Cura': [
-                    'Empathy', 'We\'ll Make It', 'Borrowed Time', 'Botany Knowledge',
-                ],
-                'Utilidade de Itens': [
-                    'Ace in the Hole', 'Plunderer\'s Instinct', 'Detective\'s Hunch', 'Pharmacy',
-                ],
-                'Leitura e Sobrevivência': [
-                    'Object of Obsession', 'Spine Chill', 'Premonition', 'No Mither',
-                ],
-                'Agilidade e Evasão': [
-                    'Balanced Landing', 'Lithe', 'Sprint Burst', 'Urban Evasion',
-                ],
-                'Fuga Tática': [
-                    'Dance With Me', 'Quick & Quiet', 'Diversion', 'Urban Evasion',
-                ],
-                'Resistência e Habilidade': [
-                    'Adrenaline', 'Dead Hard', 'Iron Will', 'Tenacity',
-                ],
-                'Cura e Estratégia': [
-                    'Botany Knowledge', 'Empathy', 'We\'ll Make It', 'Self-Care',
-                ],
-                'Aprimoramento de Itens': [
-                    'Ace in the Hole', 'Plunderer\'s Instinct', 'Detective\'s Hunch', 'Pharmacy',
-                ],
-                'Aura e Estratégia': [
-                    'Object of Obsession', 'Open-Handed', 'Detective\'s Hunch', 'Kindred',
-                ],
-                'Agilidade e Cura': [
-                    'Balanced Landing', 'Lithe', 'Sprint Burst', 'We\'ll Make It',
-                ],
-            };
+const perksPorCategoria = {
+    'Final de Partida': ['Ninguém Fica Para Trás', 'Vamos Viver Para Sempre', 'Adrenalina'],
+    'Curar e Apoiar': ['Conhecimento Botânico', 'Empatia', 'Vamos Conseguir', 'Kindred'],
+    'Evasão Rápida': ['Pouso Equilibrado', 'Ágil', 'Explosão de Sprint', 'Silêncio e Sutileza'],
+    'Detecção e Premonição': ['Alerta', 'Calafrio na Espinha', 'Pequeno Jogo', 'Premonição'],
+    'Estratégias de Gerador': ['Melhor Juntos', 'Prove Seu Valor', 'Técnico', 'Sem Misericórdia'],
+    'Enganando o Assassino': ['Dance Comigo', 'Evasão Urbana', 'Silêncio e Sutileza', 'Desvio'],
+    'Resistência e Sobrevivência': ['Inquebrável', 'Adrenalina', 'Vontade de Ferro', 'Tenacidade'],
+    'Busca por Itens': ['Coringa', 'Instinto de Saqueador', 'Farmácia', 'Intuição do Detetive'],
+    'Leitura de Aura e Estratégia': ['Distorção', 'Mão Aberta', 'Avaliação', 'Intuição do Detetive'],
+    'Cura e Mobilidade': ['Medidas Desesperadas', 'Autodidata', 'Força Interior', 'Pouso Equilibrado'],
+    'Fuga Rápida': ['Adrenalina', 'Coração Parado', 'Ágil', 'Explosão de Sprint'],
+    'Resgate e Apoio': ['Empatia', 'Vamos Conseguir', 'Kindred'],
+    'Estratégias de Perseguição': ['Desvio', 'Dance Comigo', 'Vontade de Ferro', 'Silêncio e Sutileza'],
+    'Mobilidade e Sobrevivência': ['Pouso Equilibrado', 'Explosão de Sprint', 'Ágil', 'Evasão Urbana'],
+    'Resistência e Velocidade': ['Adrenalina', 'Coração Parado', 'Vontade de Ferro', 'Inquebrável'],
+    'Cura e Estratégia': ['Conhecimento Botânico', 'Empatia', 'Vamos Conseguir'],
+    'Aprimoramento de Itens': ['Coringa', 'Instinto de Saqueador', 'Intuição do Detetive', 'Farmácia'],
+    'Aura e Estratégia': ['Objeto da Obsessão', 'Mão Aberta', 'Intuição do Detetive', 'Kindred'],
+    'Agilidade e Cura': ['Pouso Equilibrado', 'Ágil', 'Explosão de Sprint', 'Vamos Conseguir'],
+};
+
         
 
             const sortearBtn = document.getElementById('sortearBtn');
