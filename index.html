@@ -217,22 +217,30 @@
             }, 1000); // O tempo deve ser igual ao da animação
         });
 
-        function sortearPerks(quantidade) {
-            const perksSelecionadas = [];
-            const perkExclusiva = perksExclusivas[Math.floor(Math.random() * perksExclusivas.length)];
-            perksSelecionadas.push(perkExclusiva);
+function sortearPerks(quantidade) {
+    const perksSelecionadas = [];
+    let perkExclusiva = null;
 
-            const perksDisponiveis = Object.keys(perksComPesos).filter(perk => !perksSelecionadas.includes(perk));
+    // Sorteia uma perk exclusiva aleatória
+    if (Math.random() < 1) { // Sempre sorteia uma perk exclusiva
+        perkExclusiva = perksExclusivas[Math.floor(Math.random() * perksExclusivas.length)];
+        perksSelecionadas.push(perkExclusiva);
+    }
 
-            while (perksSelecionadas.length < quantidade) {
-                const perk = perksDisponiveis[Math.floor(Math.random() * perksDisponiveis.length)];
-                if (!perksSelecionadas.includes(perk)) {
-                    perksSelecionadas.push(perk);
-                }
-            }
+    const perksDisponiveis = Object.keys(perksComPesos).filter(perk => {
+        return !perksSelecionadas.includes(perk) && !(perkExclusiva && perksExclusivas.includes(perk));
+    });
 
-            return perksSelecionadas;
+    // Sorteia as outras perks
+    while (perksSelecionadas.length < quantidade) {
+        const perk = perksDisponiveis[Math.floor(Math.random() * perksDisponiveis.length)];
+        if (!perksSelecionadas.includes(perk)) {
+            perksSelecionadas.push(perk);
         }
+    }
+
+    return perksSelecionadas;
+}
 
         function exibirPerks(perks) {
             const perkDisplay = document.getElementById('perkDisplay');
