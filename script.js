@@ -96,6 +96,7 @@ const combinacoesFavoritas = [
     ['Better Together', 'Mão Aberta', 'Prove-se', 'Ação Corretiva'],
     ['Arrancada Explosiva', 'Resiliência', 'Medidas Desesperadas', 'Conseguiremos'],
     ['Prove-se', 'Libertação', 'Resiliência', 'Vontade de Ferro'],
+    ['Segundo Folego', 'Libertação', 'Resiliência', 'Vontade de Ferro'],
     ['Agilidade', 'Rápida e Silenciosa', 'Vontade de ferro', 'Espírito Calmo'],
     ['Armadilha quimica', 'Granada de luz', 'Mina Explosiva', 'Escuta']
 
@@ -104,6 +105,11 @@ const combinacoesFavoritas = [
 document.getElementById('sortearCombinadoBtn').addEventListener('click', () => {
     const quantidade = parseInt(document.getElementById('quantidadeSelect').value);
     const perkDisplay = document.getElementById('perkDisplay');
+
+    if (isNaN(quantidade) || quantidade < 1 || quantidade > (perksComPesos.length + 1)) {
+        alert('Por favor, selecione um número válido de perks.');
+        return;
+    }
 
     // Adiciona a classe de animação
     perkDisplay.classList.add('spinning');
@@ -117,39 +123,33 @@ document.getElementById('sortearCombinadoBtn').addEventListener('click', () => {
 });
 
 function sortearPerks(quantidade) {
-    // Define a chance de usar uma combinação favorita
     const usarFavorita = Math.random() < 0.5; // 50% de chance de usar uma combinação favorita
 
-    // Se for usar uma combinação favorita, sorteia uma
     if (usarFavorita) {
         const combinacaoFavorita = combinacoesFavoritas[Math.floor(Math.random() * combinacoesFavoritas.length)];
-        // Retorna apenas a quantidade solicitada
         return combinacaoFavorita.slice(0, quantidade);
     }
 
-    // Caso contrário, faz o sorteio aleatório
-    const perksSelecionadas = [];
-    let perkExclusiva = null;
+    const perksSelecionadas = new Set();
 
-    // Sorteia uma perk exclusiva aleatória
+    // Sorteia uma perk exclusiva aleatória (se necessário)
+    let perkExclusiva = null;
     if (Math.random() < 1) { // Sempre sorteia uma perk exclusiva
         perkExclusiva = perksExclusivas[Math.floor(Math.random() * perksExclusivas.length)];
-        perksSelecionadas.push(perkExclusiva);
+        perksSelecionadas.add(perkExclusiva);
     }
 
     const perksDisponiveis = Object.keys(perksComPesos).filter(perk => {
-        return !perksSelecionadas.includes(perk) && !(perkExclusiva && perksExclusivas.includes(perk));
+        return !perksSelecionadas.has(perk) && !(perkExclusiva && perksExclusivas.includes(perk));
     });
 
-    // Sorteia as outras perks
-    while (perksSelecionadas.length < quantidade) {
+    // Sorteia as outras perks, garantindo que não haja perks exclusivas
+    while (perksSelecionadas.size < quantidade) {
         const perk = perksDisponiveis[Math.floor(Math.random() * perksDisponiveis.length)];
-        if (!perksSelecionadas.includes(perk)) {
-            perksSelecionadas.push(perk);
-        }
+        perksSelecionadas.add(perk);
     }
 
-    return perksSelecionadas;
+    return Array.from(perksSelecionadas);
 }
 
 function exibirPerks(perks) {
