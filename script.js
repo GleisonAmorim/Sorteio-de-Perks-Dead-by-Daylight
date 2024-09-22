@@ -82,7 +82,7 @@ const perksComPesos = {
     'Líder': 1
 };
 
-const perksExclusivas = ['Agilidade', 'Queda Equilibrada', 'Duro na Queda', 'Arrancada Explosiva'];
+const perksExclusivas = ['Agilidade', 'Queda Equilibrada', 'Duro na Queda', 'Arrancada Explosiva', 'Superar'];
 
 // Defina aqui suas combinações favoritas
 const combinacoesFavoritas = [
