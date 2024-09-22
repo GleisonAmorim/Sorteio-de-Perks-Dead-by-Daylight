@@ -96,7 +96,8 @@ const combinacoesFavoritas = [
     ['Better Together', 'Mão Aberta', 'Prove-se', 'Ação Corretiva'],
     ['Arrancada Explosiva', 'Resiliência', 'Medidas Desesperadas', 'Conseguiremos'],
     ['Prove-se', 'Libertação', 'Resiliência', 'Vontade de Ferro'],
-    ['Agilidade', 'Rápida e Silenciosa', 'Vontade de ferro', 'Espírito Calmo']
+    ['Agilidade', 'Rápida e Silenciosa', 'Vontade de ferro', 'Espírito Calmo'],
+    ['Armadilha quimica', 'Granada de luz', 'Mina Explosiva', 'Escuta']
 
 ];
 
