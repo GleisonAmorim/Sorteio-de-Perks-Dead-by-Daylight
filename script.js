@@ -132,18 +132,16 @@ function sortearPerks(quantidade) {
 
     const perksSelecionadas = new Set();
 
-    // Sorteia uma perk exclusiva aleatória (se necessário)
-    let perkExclusiva = null;
-    if (Math.random() < 1) { // Sempre sorteia uma perk exclusiva
-        perkExclusiva = perksExclusivas[Math.floor(Math.random() * perksExclusivas.length)];
-        perksSelecionadas.add(perkExclusiva);
-    }
+    // Sorteia uma perk exclusiva aleatória (sempre deve ter pelo menos uma)
+    let perkExclusiva = perksExclusivas[Math.floor(Math.random() * perksExclusivas.length)];
+    perksSelecionadas.add(perkExclusiva);
 
+    // Remove a perk exclusiva selecionada da lista de perks disponíveis
     const perksDisponiveis = Object.keys(perksComPesos).filter(perk => {
-        return !perksSelecionadas.has(perk) && !(perkExclusiva && perksExclusivas.includes(perk));
+        return !perksSelecionadas.has(perk) && !perksExclusivas.includes(perk);
     });
 
-    // Sorteia as outras perks, garantindo que não haja perks exclusivas
+    // Sorteia as outras perks, garantindo que não haja duplicatas
     while (perksSelecionadas.size < quantidade) {
         const perk = perksDisponiveis[Math.floor(Math.random() * perksDisponiveis.length)];
         perksSelecionadas.add(perk);
