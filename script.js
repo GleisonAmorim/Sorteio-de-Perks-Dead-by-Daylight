@@ -89,7 +89,15 @@ const combinacoesFavoritas = [
     ['Adrenalina', 'Dance Comigo', 'Rápida e silenciosa', 'Agilidade'],
     ['Distorção', 'Duro na queda', 'Deja vu', 'Prove Se'],
     ['Adrenalina', 'Esperança', 'Arrancada Explosiva', 'Resiliência'],
-    //  ['Adrenalina', 'Esperança', 'Arrancada Explosiva', 'Resiliência']   
+    ['Libertação', 'Ataque Decisivo', 'Inquebrável', 'Tenacidade'],
+    ['Intuição de Detetive', 'Mão Aberta', 'Small Game', 'Arrancada Explosiva'],
+    ['Tenacidade', 'Inquebrável', 'Fuga', 'Superação'] ,
+    ['Agilidade', 'Resiliência', 'Deja Vu', 'Prove-se']
+    ['Better Together', 'Mão Aberta', 'Prove-se', 'Ação Corretiva'],
+    ['Arrancada Explosiva', 'Resiliência', 'Medidas Desesperadas', 'Conseguiremos'],
+    ['Prove-se', 'Libertação', 'Resiliência', 'Vontade de Ferro'],
+    ['Agilidade', 'Rápida e Silenciosa', 'Vontade de ferro', 'Espírito Calmo']
+
 ];
 
 document.getElementById('sortearCombinadoBtn').addEventListener('click', () => {
