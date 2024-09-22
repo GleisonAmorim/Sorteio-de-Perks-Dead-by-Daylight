@@ -84,6 +84,14 @@ const perksComPesos = {
 
 const perksExclusivas = ['Agilidade', 'Queda Equilibrada', 'Duro na Queda', 'Arrancada Explosiva'];
 
+// Defina aqui suas combinações favoritas
+const combinacoesFavoritas = [
+    ['Adrenalina', 'Dance Comigo', 'Rápida e silenciosa', 'Agilidade'],
+    ['Distorção', 'Duro na queda', 'Deja vu', 'Prove Se'],
+    ['Adrenalina', 'Esperança', 'Arrancada Explosiva', 'Resiliência'],
+    //  ['Adrenalina', 'Esperança', 'Arrancada Explosiva', 'Resiliência']   
+];
+
 document.getElementById('sortearCombinadoBtn').addEventListener('click', () => {
     const quantidade = parseInt(document.getElementById('quantidadeSelect').value);
     const perkDisplay = document.getElementById('perkDisplay');
@@ -100,6 +108,17 @@ document.getElementById('sortearCombinadoBtn').addEventListener('click', () => {
 });
 
 function sortearPerks(quantidade) {
+    // Define a chance de usar uma combinação favorita
+    const usarFavorita = Math.random() < 0.5; // 50% de chance de usar uma combinação favorita
+
+    // Se for usar uma combinação favorita, sorteia uma
+    if (usarFavorita) {
+        const combinacaoFavorita = combinacoesFavoritas[Math.floor(Math.random() * combinacoesFavoritas.length)];
+        // Retorna apenas a quantidade solicitada
+        return combinacaoFavorita.slice(0, quantidade);
+    }
+
+    // Caso contrário, faz o sorteio aleatório
     const perksSelecionadas = [];
     let perkExclusiva = null;
 
