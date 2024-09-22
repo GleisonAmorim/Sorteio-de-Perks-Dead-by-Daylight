@@ -82,7 +82,7 @@ const perksComPesos = {
     'Líder': 1
 };
 
-const perksExclusivas = ['Agilidade', 'Queda Equilibrada', 'Duro na Queda', 'Arrancada Explosiva', 'Superar'];
+const perksExclusivas = ['Agilidade', 'Queda Equilibrada', 'Duro na Queda', 'Arrancada Explosiva', 'Superar', 'Hit de sucesso'];
 
 // Defina aqui suas combinações favoritas
 const combinacoesFavoritas = [
@@ -91,7 +91,7 @@ const combinacoesFavoritas = [
     ['Adrenalina', 'Esperança', 'Arrancada Explosiva', 'Resiliência'],
     ['Libertação', 'Ataque Decisivo', 'Inquebrável', 'Tenacidade'],
     ['Intuição de Detetive', 'Mão Aberta', 'Small Game', 'Arrancada Explosiva'],
-    ['Tenacidade', 'Inquebrável', 'Fuga', 'Superação'] ,
+    ['Tenacidade', 'Inquebrável', 'Bate e volta', 'Disputa de forças'] ,
     ['Agilidade', 'Resiliência', 'Deja Vu', 'Prove-se']
     ['Better Together', 'Mão Aberta', 'Prove-se', 'Ação Corretiva'],
     ['Arrancada Explosiva', 'Resiliência', 'Medidas Desesperadas', 'Conseguiremos'],
