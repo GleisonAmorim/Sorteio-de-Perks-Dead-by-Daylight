@@ -2,7 +2,7 @@ Título do Projeto: Sorteio de Perks Dead by Daylight
 
 Descrição: Este projeto é um sorteio de perks para o jogo "Dead by Daylight". Permite aos jogadores escolherem uma categoria e, em seguida, sorteia quatro perks aleatórios dessa categoria. Os jogadores podem usar isso para diversificar as escolhas de perks durante o jogo.
 
-Funcionalidades:
+Funcionalidades
 
 Interface de usuário atraente e responsiva.
 Seleção de categoria de perks.
